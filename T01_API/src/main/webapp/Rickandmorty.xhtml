@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <p:growl id="msj" showDetail="true" skipDetailIfEqualsSummary="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <h:form id="form">
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Ingrese nombre de persanaje"/>
+                <p:commandButton value="Buscar" action="#{ApiCmorty.consumiendo()}"  update="form">
+                    <p:inputText value="#{ApiCmorty.ric.nombre}" maxlength="20"/>
+                </p:commandButton>
+                <p:outputLabel value="especie" />
+                <p:outputLabel id="specie" value="#{ApiCmorty.ric.especie}"/>
+                <p:outputLabel value="rol" />
+                <p:outputLabel id="rol" value="#{ApiCmorty.ric.id}"/>
+                <p:outputLabel value="imagen URL" />
+
+                <p:graphicImage url="#{ApiCmorty.ric.imagen}" height="150 px"/>
+                <p:outputLabel value="status" />
+                <p:outputLabel id="estado" value="#{ApiCmorty.ric.estatus}"/>
+                <p:outputLabel value="specie" />
+                <p:outputLabel id="universo" value="#{ApiCmorty.ric.id}"/>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

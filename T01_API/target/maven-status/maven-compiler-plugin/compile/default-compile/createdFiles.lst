@@ -1,0 +1,3 @@
+model\Rickandmorty.class
+controlador\ApiCmorty.class
+services\APIRickandmorty.class
