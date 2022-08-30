@@ -7,6 +7,7 @@ package services;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
+import java.io.IOException;
 import model.Rickandmorty;
 import org.primefaces.shaded.json.JSONObject;
 
@@ -18,20 +19,31 @@ public class APIRickandmorty {
 
     public static JSONObject consumirID(Rickandmorty ric) throws Exception {
         Unirest.setTimeouts(0, 0);
-        HttpResponse<String> response = Unirest.get("https://rickandmortyapi.com/api/character/" + ric.getNombre())
-                .header("id", "integer")
-                .header("name", "String")
-                .header("status", "String")
-                .header("species", "String")
+        HttpResponse<String> response = Unirest.get("https://rickandmortyapi.com/api/character/" + ric.getId())
+                .header("id", "int")
+                .header("name", "string")
+                .header("type", "string")
+                .header("dimension", "string")
+                .header("residents", "array")
+                .header("url", "string")
+                .header("created", "string")
                 .asString();
         JSONObject cadenaJson = new JSONObject(response.getBody());
 //        JSONObject cadena = cadenaJson.getJSONObject("data");
-        ric.setNombre(cadenaJson.getString("name")); 
+        ric.setNombre(cadenaJson.getString("name"));
         ric.setEstatus(cadenaJson.getString("status"));
-         ric.setEspecie(cadenaJson.getString("species"));
-         ric.setImagen(cadenaJson.getString("imagen"));
-         System.out.println("entre en la api "+ ric.getNombre());
+        ric.setEspecie(cadenaJson.getString("species"));
+        ric.setImagen(cadenaJson.getString("image"));
+        System.out.println("entre en la api " + ric.getNombre());
         return cadenaJson;
     }
-    
+
+        public static void main(String[] args) throws IOException, Exception {
+        Rickandmorty personaje = new Rickandmorty();
+        personaje.setId(1);
+        JSONObject json = APIRickandmorty.consumirID(personaje);
+        System.out.println("nombre :" + personaje.getNombre()+ ": " + personaje.getEstatus()+ ": "+personaje.getEspecie());
+        
+
+    }
 }

@@ -13,7 +13,7 @@ import lombok.Data;
  */
 @Data
 public class Rickandmorty {
-    Integer id;
+    int id;
     String nombre;
     String estatus;
     String especie;

@@ -18,12 +18,12 @@
             <p:panelGrid columns="2">
                 <p:outputLabel value="Ingrese nombre de persanaje"/>
                 <p:commandButton value="Buscar" action="#{ApiCmorty.consumiendo()}"  update="form">
-                    <p:inputText value="#{ApiCmorty.ric.nombre}" maxlength="20"/>
+                    <p:inputText value="#{ApiCmorty.ric.id}" maxlength="20"/>
                 </p:commandButton>
                 <p:outputLabel value="especie" />
                 <p:outputLabel id="specie" value="#{ApiCmorty.ric.especie}"/>
                 <p:outputLabel value="rol" />
-                <p:outputLabel id="rol" value="#{ApiCmorty.ric.id}"/>
+                <p:outputLabel id="rol" value="#{ApiCmorty.ric.nombre}"/>
                 <p:outputLabel value="imagen URL" />
 
                 <p:graphicImage url="#{ApiCmorty.ric.imagen}" height="150 px"/>
